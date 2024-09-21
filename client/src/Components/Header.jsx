@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 const Header = () => {
   return (
     <>
@@ -11,9 +12,12 @@ const Header = () => {
             />
           </div>
           <div className="flex items-center gap-5">
-            <span className="px-5 py-2 font-bold text-white bg-red-500 rounded-lg hover:bg-red-700">
+            <Link
+              to="/dashboard"
+              className="px-5 py-2 text-sm font-bold text-white bg-red-600 rounded-lg hover:bg-red-700"
+            >
               Get Started
-            </span>
+            </Link>
           </div>
         </div>
       </nav>
