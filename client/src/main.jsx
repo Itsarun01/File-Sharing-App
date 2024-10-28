@@ -4,7 +4,8 @@ import App from "./App.jsx";
 import "./index.css";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Hero from "./Components/Hero.jsx";
-import Dashboard from "./Components/dashboard.jsx";
+import Dashboard from "./Components/Dashboard.jsx";
+import SignInPage from "./Auth/Index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
     ],
+  },
+  {
+    path: "/auth/sign-in",
+    element: <SignInPage />,
   },
 ]);
 
