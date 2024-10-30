@@ -1,13 +1,11 @@
 import "./App.css";
 import Header from "./Components/Header";
-
-import {Outlet} from "react-router-dom";
+// import {useUser} from "@clerk/clerk-react";
 
 function App() {
   return (
     <>
       <Header />
-      <Outlet />
     </>
   );
 }

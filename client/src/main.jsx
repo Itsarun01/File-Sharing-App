@@ -3,9 +3,15 @@ import {createRoot} from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Hero from "./Components/Hero.jsx";
 import Dashboard from "./Components/Dashboard.jsx";
-import SignInPage from "./Auth/Index.jsx";
+import SignInPage from "./auth/sign-in/Index.jsx";
+import {ClerkProvider} from "@clerk/clerk-react";
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key");
+}
 
 const router = createBrowserRouter([
   {
@@ -14,15 +20,12 @@ const router = createBrowserRouter([
 
     children: [
       {
-        path: "/",
-        element: <Hero />,
-      },
-      {
         path: "/dashboard",
         element: <Dashboard />,
       },
     ],
   },
+
   {
     path: "/auth/sign-in",
     element: <SignInPage />,
@@ -31,6 +34,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+      <RouterProvider router={router} />
+    </ClerkProvider>
   </StrictMode>
 );
