@@ -3,7 +3,7 @@ import {SignIn} from "@clerk/clerk-react";
 const SignInPage = () => {
   return (
     <>
-      <div>
+      <div className="">
         <SignIn />
       </div>
     </>

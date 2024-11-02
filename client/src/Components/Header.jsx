@@ -1,17 +1,16 @@
-import {UserButton} from "@clerk/clerk-react";
 import {Link} from "react-router-dom";
 const Header = () => {
   return (
     <>
       <nav>
         <div className="flex items-center justify-between p-3 px-12 border ">
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img
               className="w-10 h-10"
               src="https://img.icons8.com/ios/50/000000/share.png"
               alt="logo"
             />
-          </div>
+          </Link>
           <div className="flex items-center gap-5">
             <Link
               to="/dashboard"

@@ -1,11 +1,13 @@
 import {StrictMode} from "react";
 import {createRoot} from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Dashboard from "./Components/Dashboard.jsx";
-import SignInPage from "./auth/sign-in/Index.jsx";
 import {ClerkProvider} from "@clerk/clerk-react";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Header from "./Components/Header";
+import Hero from "./Components/Hero";
+import SignInPage from "./auth/sign-in/SignInPage";
+import NotFoundPage from "./Components/Pages/NotFoundPage";
+import Dashboard from "./Components/Dashboard";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -16,19 +18,31 @@ if (!PUBLISHABLE_KEY) {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <div>
+        <Header />
+        <Hero />
+      </div>
+    ),
+  },
 
-    children: [
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-      },
-    ],
+  {
+    path: "/dashboard",
+    element: (
+      <>
+        <Header />
+        <Dashboard />
+      </>
+    ),
   },
 
   {
     path: "/auth/sign-in",
     element: <SignInPage />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 
