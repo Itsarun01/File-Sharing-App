@@ -8,6 +8,7 @@ import Hero from "./Components/Hero";
 import SignInPage from "./auth/sign-in/SignInPage";
 import NotFoundPage from "./Components/Pages/NotFoundPage";
 import Dashboard from "./Components/Dashboard";
+import {UserButton} from "@clerk/clerk-react";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <>
-        <Header />
+        <Header showProfile={UserButton} />
         <Dashboard />
       </>
     ),

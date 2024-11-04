@@ -1,30 +1,33 @@
 // import {Navigate} from "react-router-dom";
 import {useUser} from "@clerk/clerk-react";
+import {Navigate} from "react-router-dom";
+import {UserButton} from "@clerk/clerk-react";
 
 const Dashboard = () => {
   const {user, isLoaded, isSignedIn} = useUser();
 
   if (!isSignedIn && isLoaded) {
-    // return <Navigate to="/auth/sign-in" />;
+    return <Navigate to="/auth/sign-in" />;
   } else {
-    // <Navigate to="/" />;
+    <Navigate to="/dashboard" />;
   }
 
   return (
     <>
       <div>
-        <p className="font-semibold text-center mt-16 mb-16">
+        <div></div>
+        <div className="font-semibold text-center mt-16 mb-6">
           <span className=" text-3xl font-extrabold text-red-600">
             Upload your file here,
           </span>
           <br />
-          <span className="text-2xl ">
+          <p className="text-2xl mt-2 mb-12">
             Copy the link and share it wherever you want.
-          </span>
-        </p>
-        <label
+          </p>
+        </div>
+        <div
           to="uploadFile1"
-          className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
+          className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-60 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +48,7 @@ const Dashboard = () => {
           <p className="text-xs font-medium text-gray-400 mt-2">
             PNG, JPG SVG, WEBP, and GIF are Allowed.
           </p>
-        </label>
+        </div>
       </div>
     </>
   );

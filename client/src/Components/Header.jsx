@@ -1,3 +1,4 @@
+import {UserButton} from "@clerk/clerk-react";
 import {Link} from "react-router-dom";
 const Header = () => {
   return (
@@ -14,9 +15,9 @@ const Header = () => {
           <div className="flex items-center gap-5">
             <Link
               to="/dashboard"
-              className="px-5 py-2 text-sm font-bold text-white bg-red-600 rounded-lg hover:bg-red-700"
+              className="px-5 py-2 text-sm font-bold text-white"
             >
-              Get Started
+              {!UserButton ? "Get Started" : <UserButton />}
             </Link>
           </div>
         </div>
