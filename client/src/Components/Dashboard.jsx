@@ -1,7 +1,6 @@
 // import {Navigate} from "react-router-dom";
 import {useUser} from "@clerk/clerk-react";
 import {Navigate} from "react-router-dom";
-import {UserButton} from "@clerk/clerk-react";
 
 const Dashboard = () => {
   const {user, isLoaded, isSignedIn} = useUser();
@@ -15,7 +14,6 @@ const Dashboard = () => {
   return (
     <>
       <div>
-        <div></div>
         <div className="font-semibold text-center mt-16 mb-6">
           <span className=" text-3xl font-extrabold text-red-600">
             Upload your file here,

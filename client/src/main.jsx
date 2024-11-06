@@ -3,12 +3,11 @@ import {createRoot} from "react-dom/client";
 import "./index.css";
 import {ClerkProvider} from "@clerk/clerk-react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Header from "./Components/Header";
-import Hero from "./Components/Hero";
+import App from "./App";
+import Home from "./Components/Home";
 import SignInPage from "./auth/sign-in/SignInPage";
 import NotFoundPage from "./Components/Pages/NotFoundPage";
 import Dashboard from "./Components/Dashboard";
-import {UserButton} from "@clerk/clerk-react";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -18,23 +17,17 @@ if (!PUBLISHABLE_KEY) {
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: (
-      <div>
-        <Header />
-        <Hero />
-      </div>
-    ),
-  },
-
-  {
-    path: "/dashboard",
-    element: (
-      <>
-        <Header showProfile={UserButton} />
-        <Dashboard />
-      </>
-    ),
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+    ],
   },
 
   {
