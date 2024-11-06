@@ -2,14 +2,14 @@ import {UserButton} from "@clerk/clerk-react";
 import {Link} from "react-router-dom";
 import {useUser} from "@clerk/clerk-react";
 const Header = () => {
-  const {user, isSignedIn} = useUser();
+  const {isSignedIn} = useUser();
   return (
     <>
       <nav>
         <div className="flex items-center justify-between p-2 px-12 border bg-slate-50 ">
           <Link to="/" className="flex items-center">
             <img
-              className="w-10 h-10"
+              className="w-10 h-10 "
               src="https://img.icons8.com/ios/50/000000/share.png"
               alt="logo"
             />

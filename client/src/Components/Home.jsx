@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useUser} from "@clerk/clerk-react";
 
 const Hero = () => {
-  const {user, isSignedIn} = useUser();
+  const {isSignedIn} = useUser();
   return (
     <>
       <section className="h-screen bg-gray-50">
