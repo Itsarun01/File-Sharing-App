@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <>
       <section className="h-screen bg-gray-50">
-        <div className="max-w-screen-xl px-4 py-48 mx-auto lg:flex lg:h-{80vh} lg:items-center">
+        <div className="max-w-screen-xl px-4 py-48 mx-auto lg:flex lg:h-{82vh} lg:items-center">
           <div className="max-w-xl mx-auto text-center">
             <h1 className="text-3xl font-extrabold sm:text-5xl ">
               <strong className="font-extrabold text-red-700 sm:block">

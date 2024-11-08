@@ -1,8 +1,15 @@
 // import {Navigate} from "react-router-dom";
 import {useUser} from "@clerk/clerk-react";
 import {Navigate} from "react-router-dom";
+import {useRef} from "react";
 
 const Dashboard = () => {
+  const fileInputRef = useRef();
+
+  const fileUploadHandler = () => {
+    fileInputRef.current.click();
+  };
+
   const {isLoaded, isSignedIn} = useUser();
 
   if (!isSignedIn && isLoaded) {
@@ -23,9 +30,9 @@ const Dashboard = () => {
             Upload any file from your device, and get a shareable link.
           </p>
         </div>
-        {/* input Filed */}
-        <label
-          to="uploadFile1"
+        {/* Upload File Container */}
+        <div
+          onClick={fileUploadHandler}
           className="bg-red-50 text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-red-300 border-dashed mx-auto font-[sans-serif]"
         >
           <svg
@@ -43,11 +50,12 @@ const Dashboard = () => {
             />
           </svg>
           Upload file
-          <input type="file" id="uploadFile1" className="hidden" />
+          <input type="file" ref={fileInputRef} className="hidden" />
           <p className="text-xs font-medium text-gray-400 mt-2">
             Click this box to upload a file
           </p>
-        </label>
+        </div>
+        {/* Upload File Container */}
       </div>
     </>
   );
