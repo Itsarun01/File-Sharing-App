@@ -13,6 +13,7 @@ const Dashboard = () => {
   const {isLoaded, isSignedIn} = useUser();
 
   if (!isSignedIn && isLoaded) {
+    //
     return <Navigate to="/auth/sign-in" />;
   } else {
     <Navigate to="/dashboard" />;
