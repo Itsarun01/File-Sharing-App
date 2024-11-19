@@ -1,14 +1,30 @@
 // import {Navigate} from "react-router-dom";
 import {useUser} from "@clerk/clerk-react";
 import {Navigate} from "react-router-dom";
-import {useRef} from "react";
+import {useRef, useState, useEffect} from "react";
+import {uploadFile} from "../Api/api";
 
 const Dashboard = () => {
+  const [file, setFile] = useState();
+
   const fileInputRef = useRef();
 
   const fileUploadHandler = () => {
     fileInputRef.current.click();
   };
+
+  useEffect(() => {
+    const getImage = () => {
+      if (file) {
+        const data = new FormData();
+        data.append("Name", file.name);
+        data.append("File", file);
+
+        uploadFile(data);
+      }
+    };
+    getImage();
+  }, [file]);
 
   const {isLoaded, isSignedIn} = useUser();
 
@@ -51,7 +67,12 @@ const Dashboard = () => {
             />
           </svg>
           Upload file
-          <input type="file" ref={fileInputRef} className="hidden" />
+          <input
+            type="file"
+            onChange={(e) => setFile(e.target.files[0])}
+            ref={fileInputRef}
+            className="hidden"
+          />
           <p className="text-xs font-medium text-gray-400 mt-2">
             Click this box to upload a file
           </p>
