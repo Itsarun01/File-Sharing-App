@@ -14,13 +14,13 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const getImage = () => {
+    const getImage = async () => {
       if (file) {
         const data = new FormData();
         data.append("Name", file.name);
         data.append("File", file);
 
-        uploadFile(data);
+        let response = await uploadFile(data);
       }
     };
     getImage();

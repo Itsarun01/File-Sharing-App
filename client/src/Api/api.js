@@ -1,11 +1,14 @@
 import axois from "axios";
 
-const API_URL = "http://localhost:8080/upload";
+const API_URL = "http://localhost:8080";
 
-export const uploadFile = (file) => {
+const uploadFile = async (data) => {
   try {
-    axois.get(API_URL, file);
+    let response = await axois.post(`${API_URL}/upload`, data);
+    return response.data;
   } catch (error) {
-    console.error("Error While Calling the Api..", error.message);
+    console.log("Error While Calling the Api..", error.message);
   }
 };
+
+export {uploadFile};
